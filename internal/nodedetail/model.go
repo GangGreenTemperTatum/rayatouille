@@ -294,6 +294,5 @@ func (m Model) View() string {
 		{Key: "y", Desc: "copy line"}, {Key: "Y", Desc: "copy visible"}, {Key: "r", Desc: "refresh"},
 	})
 
-
 	return lipgloss.JoinVertical(lipgloss.Left, tabBar, "", content, hints)
 }
