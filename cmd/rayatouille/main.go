@@ -22,7 +22,7 @@ func main() {
 	rootCmd := newRootCmd()
 
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		_, _ = fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
@@ -49,7 +49,7 @@ func newRootCmd() *cobra.Command {
 				return fmt.Errorf("cannot reach Ray cluster at %s: %w", cfg.Address, err)
 			}
 
-			fmt.Fprintf(os.Stderr, "Connected to Ray cluster at %s (Ray %s)\n", cfg.Address, versionInfo.RayVersion)
+			_, _ = fmt.Fprintf(os.Stderr, "Connected to Ray cluster at %s (Ray %s)\n", cfg.Address, versionInfo.RayVersion)
 
 			model := app.New(client, cfg, versionInfo)
 			p := tea.NewProgram(model)
@@ -191,7 +191,7 @@ func profileRemoveCmd() *cobra.Command {
 				return err
 			}
 
-			fmt.Fprintf(cmd.OutOrStdout(), "Profile %q removed.\n", name)
+			_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Profile %q removed.\n", name)
 			return nil
 		},
 	}
@@ -217,7 +217,7 @@ func profileUseCmd() *cobra.Command {
 			if err := config.SetActiveProfile(name); err != nil {
 				return err
 			}
-			fmt.Fprintf(cmd.OutOrStdout(), "Active profile set to %q.\n", name)
+			_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Active profile set to %q.\n", name)
 			return nil
 		},
 	}
