@@ -1,0 +1,51 @@
+{
+  "result": true,
+  "msg": "",
+  "data": {
+    "result": {
+      "total": 2,
+      "num_after_truncation": 2,
+      "num_filtered": 0,
+      "result": [
+        {
+          "state": "ALIVE",
+          "resources_total": {
+            "CPU": 4.0,
+            "memory": 8589934592.0,
+            "object_store_memory": 4227246080.0,
+            "node:100.64.32.128": 1.0
+          },
+          "state_message": null,
+          "node_ip": "100.64.32.128",
+          "is_head_node": true,
+          "labels": {
+            "ray.io/node-group": "head",
+            "ray.io/node-id": "c105c9a4b7b5c44e04e6a58d1ddc550c14fe720456ec27658b188aee"
+          },
+          "node_id": "c105c9a4b7b5c44e04e6a58d1ddc550c14fe720456ec27658b188aee",
+          "node_name": "100.64.32.128"
+        },
+        {
+          "state": "DEAD",
+          "resources_total": {
+            "CPU": 8.0,
+            "memory": 17179869184.0,
+            "object_store_memory": 8454492160.0,
+            "node:100.64.47.217": 1.0,
+            "GPU": 1.0
+          },
+          "state_message": "Node was terminated due to autoscaler scale-down.",
+          "node_ip": "100.64.47.217",
+          "is_head_node": false,
+          "labels": {
+            "ray.io/node-group": "worker",
+            "ray.io/node-id": "b2c8b11cba42f6f136bf19d2c1bfbc6e2b0419af791d5ef7db54c995"
+          },
+          "node_id": "b2c8b11cba42f6f136bf19d2c1bfbc6e2b0419af791d5ef7db54c995",
+          "node_name": "100.64.47.217"
+        }
+      ],
+      "partial_failure_warning": ""
+    }
+  }
+}

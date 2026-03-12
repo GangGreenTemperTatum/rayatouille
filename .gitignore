@@ -1,0 +1,44 @@
+# Build output
+bin/
+dist/
+/rayatouille
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# GoReleaser
+/completions/
+
+# IDE / editor
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.*.kate-swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Planning (internal)
+.planning/
+
+# Coverage
+coverage.txt
+coverage.html
+*.coverprofile

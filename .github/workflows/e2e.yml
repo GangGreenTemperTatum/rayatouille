@@ -1,0 +1,25 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: E2E Tests
+        env:
+          RAY_DASHBOARD_URL: ${{ secrets.RAY_DASHBOARD_URL }}
+        run: |
+          if [ -z "$RAY_DASHBOARD_URL" ]; then
+            echo "RAY_DASHBOARD_URL secret not set, skipping e2e tests"
+            exit 0
+          fi
+          go test -race -v -tags=e2e ./test/e2e/...

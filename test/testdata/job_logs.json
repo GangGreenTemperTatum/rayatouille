@@ -1,0 +1,3 @@
+{
+  "logs": "2026-03-12 10:00:00,000\tINFO worker.py:123 -- Starting worker\n2026-03-12 10:00:01,000\tINFO worker.py:456 -- Processing batch 1/10\n2026-03-12 10:00:02,000\tWARNING worker.py:789 -- Slow network detected\n2026-03-12 10:00:03,000\tINFO worker.py:456 -- Processing batch 2/10\n2026-03-12 10:00:04,000\tINFO worker.py:999 -- Task completed successfully\n"
+}

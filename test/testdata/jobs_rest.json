@@ -1,0 +1,57 @@
+[
+  {
+    "type": "SUBMISSION",
+    "job_id": null,
+    "submission_id": "raysubmit_ABWGkRenHVev9s7A",
+    "driver_info": null,
+    "status": "SUCCEEDED",
+    "entrypoint": "python -c \"import ray; ray.init(); print(ray.cluster_resources())\"",
+    "message": "Job finished successfully.",
+    "error_type": null,
+    "start_time": 1773279930789,
+    "end_time": 1773279931659,
+    "metadata": {},
+    "runtime_env": {},
+    "driver_agent_http_address": "http://100.64.32.128:52365",
+    "driver_node_id": "c105c9a4b7b5c44e04e6a58d1ddc550c14fe720456ec27658b188aee",
+    "driver_exit_code": 0
+  },
+  {
+    "type": "SUBMISSION",
+    "job_id": "02000000",
+    "submission_id": "raysubmit_Jk4WANSfPSbsRRZQ",
+    "driver_info": {
+      "id": "02000000",
+      "node_ip_address": "100.64.47.217",
+      "pid": "67890"
+    },
+    "status": "FAILED",
+    "entrypoint": "python train.py --epochs 100",
+    "message": "Job entrypoint command failed with exit code 1.",
+    "error_type": "JOB_ENTRYPOINT_COMMAND_ERROR",
+    "start_time": 1773280000000,
+    "end_time": 1773280100000,
+    "metadata": {"user": "ads"},
+    "runtime_env": {"pip": ["torch"]},
+    "driver_agent_http_address": "http://100.64.47.217:52366",
+    "driver_node_id": "b2c8b11cba42f6f136bf19d2c1bfbc6e2b0419af791d5ef7db54c995",
+    "driver_exit_code": 1
+  },
+  {
+    "type": "SUBMISSION",
+    "job_id": null,
+    "submission_id": "raysubmit_NullFieldsTest",
+    "driver_info": null,
+    "status": "SUCCEEDED",
+    "entrypoint": "python test.py",
+    "message": "Job finished successfully.",
+    "error_type": null,
+    "start_time": 1773280200000,
+    "end_time": 1773280300000,
+    "metadata": {},
+    "runtime_env": {},
+    "driver_agent_http_address": "",
+    "driver_node_id": "",
+    "driver_exit_code": 0
+  }
+]

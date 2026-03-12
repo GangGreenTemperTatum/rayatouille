@@ -1,0 +1,13 @@
+{
+  "result": true,
+  "msg": "",
+  "data": {
+    "result": {
+      "gcs_server": ["gcs_server.out", "gcs_server.err"],
+      "raylet": ["raylet.out", "raylet.err"],
+      "dashboard": ["dashboard.log"],
+      "worker_out": ["worker-abc123-01000000-30708.out"],
+      "worker_err": ["worker-abc123-01000000-30708.err"]
+    }
+  }
+}

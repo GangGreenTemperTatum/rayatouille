@@ -1,0 +1,62 @@
+{
+  "result": true,
+  "msg": "",
+  "data": {
+    "result": {
+      "total": 2,
+      "num_after_truncation": 2,
+      "num_filtered": 0,
+      "result": [
+        {
+          "state": "ALIVE",
+          "actor_id": "a1b2c3d4e5f6a7b8c9d0e1f201000000",
+          "class_name": "RayTrainWorker",
+          "job_id": "01000000",
+          "ray_namespace": "default",
+          "pid": 54321,
+          "node_id": "c105c9a4b7b5c44e04e6a58d1ddc550c14fe720456ec27658b188aee",
+          "name": "train_worker_0",
+          "is_detached": false,
+          "placement_group_id": null,
+          "repr_name": "",
+          "required_resources": {"CPU": 1.0},
+          "death_cause": null,
+          "num_restarts": "0",
+          "call_site": null
+        },
+        {
+          "state": "DEAD",
+          "actor_id": "0d08091df481c49e583f953201000000",
+          "class_name": "JobSupervisor",
+          "job_id": "02000000",
+          "ray_namespace": "SUPERVISOR_ACTOR_RAY_NAMESPACE",
+          "pid": 180530,
+          "node_id": "c105c9a4b7b5c44e04e6a58d1ddc550c14fe720456ec27658b188aee",
+          "name": "_ray_internal_job_actor_raysubmit_Jk4WANSfPSbsRRZQ",
+          "is_detached": true,
+          "placement_group_id": null,
+          "repr_name": "",
+          "required_resources": {},
+          "death_cause": {
+            "actor_died_error_context": {
+              "error_message": "The actor is dead because its worker process has died. Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits.",
+              "owner_id": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+              "owner_ip_address": "100.64.32.128",
+              "node_ip_address": "100.64.32.128",
+              "pid": 180530,
+              "name": "_ray_internal_job_actor_raysubmit_Jk4WANSfPSbsRRZQ",
+              "ray_namespace": "SUPERVISOR_ACTOR_RAY_NAMESPACE",
+              "class_name": "JobSupervisor",
+              "actor_id": "0d08091df481c49e583f953201000000",
+              "reason": "WORKER_DIED",
+              "never_started": false
+            }
+          },
+          "num_restarts": "0",
+          "call_site": null
+        }
+      ],
+      "partial_failure_warning": ""
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "result": true,
+  "msg": "",
+  "data": {
+    "result": {
+      "total": 6,
+      "num_after_truncation": 6,
+      "num_filtered": 6,
+      "result": {
+        "node_id_to_summary": {
+          "cluster": {
+            "summary": {
+              "WebScanBatchWorker.scan_target": {
+                "func_or_class_name": "WebScanBatchWorker.scan_target",
+                "type": "ACTOR_TASK",
+                "state_counts": { "FINISHED": 3 }
+              },
+              "WebScanBatchWorker.__init__": {
+                "func_or_class_name": "WebScanBatchWorker.__init__",
+                "type": "ACTOR_CREATION_TASK",
+                "state_counts": { "FINISHED": 3 }
+              }
+            },
+            "total_tasks": 0,
+            "total_actor_tasks": 3,
+            "total_actor_scheduled": 3,
+            "summary_by": "func_name"
+          }
+        }
+      }
+    }
+  }
+}

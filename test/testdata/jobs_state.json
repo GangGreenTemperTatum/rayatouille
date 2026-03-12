@@ -1,0 +1,52 @@
+{
+  "result": true,
+  "msg": "",
+  "data": {
+    "result": {
+      "total": 3,
+      "num_after_truncation": 3,
+      "num_filtered": 0,
+      "result": [
+        {
+          "type": "SUBMISSION",
+          "submission_id": "raysubmit_ABWGkRenHVev9s7A",
+          "job_id": "01000000",
+          "error_type": null,
+          "entrypoint": "python -c \"import ray; ray.init(); print(ray.cluster_resources())\"",
+          "status": "SUCCEEDED",
+          "driver_info": {
+            "id": "01000000",
+            "node_ip_address": "100.64.32.128",
+            "pid": "12345"
+          },
+          "message": "Job finished successfully."
+        },
+        {
+          "type": "SUBMISSION",
+          "submission_id": "raysubmit_Jk4WANSfPSbsRRZQ",
+          "job_id": "02000000",
+          "error_type": "JOB_ENTRYPOINT_COMMAND_ERROR",
+          "entrypoint": "python train.py --epochs 100",
+          "status": "FAILED",
+          "driver_info": {
+            "id": "02000000",
+            "node_ip_address": "100.64.47.217",
+            "pid": "67890"
+          },
+          "message": "Job entrypoint command failed with exit code 1."
+        },
+        {
+          "type": "SUBMISSION",
+          "submission_id": "raysubmit_NullFieldsTest",
+          "job_id": null,
+          "error_type": null,
+          "entrypoint": "python test.py",
+          "status": "SUCCEEDED",
+          "driver_info": null,
+          "message": "Job finished successfully."
+        }
+      ],
+      "partial_failure_warning": ""
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": ["--fast"],
+  "go.useLanguageServer": true,
+  "go.formatTool": "goimports",
+  "go.testFlags": ["-v", "-race"],
+  "go.testTimeout": "30s",
+  "go.coverOnSave": false,
+  "go.coverOnSingleTest": true,
+  "gopls": {
+    "ui.semanticTokens": true,
+    "formatting.gofumpt": true,
+    "ui.completion.usePlaceholders": true,
+    "ui.diagnostic.analyses": {
+      "fieldalignment": true,
+      "shadow": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "nilness": true
+    }
+  },
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "golang.go",
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.tmpl": "html"
+  },
+  "files.exclude": {
+    "bin/": true,
+    "dist/": true,
+    "vendor/": true
+  }
+}
