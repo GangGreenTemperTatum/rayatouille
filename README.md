@@ -237,4 +237,3 @@ This project is licensed under the Apache License 2.0 - see the
 By watching the repo, you can also be notified of any upcoming releases.
 
 [![Star history graph](https://api.star-history.com/svg?repos=GangGreenTemperTatum/rayatouille&type=Date)](https://star-history.com/#GangGreenTemperTatum/rayatouille&Date)
-
