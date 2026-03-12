@@ -289,7 +289,7 @@ func (m Model) Update(msg tea.Msg) (Model, tea.Cmd) {
 				return m, nil
 			}
 			entry := *selected
-			return m, func() tea.Msg { return SelectAppMsg{Name: entry.Name, App: entry.App} }
+			return m, func() tea.Msg { return SelectAppMsg(entry) }
 		}
 	}
 

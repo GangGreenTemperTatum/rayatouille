@@ -52,7 +52,7 @@ func (c *HTTPClient) Ping(ctx context.Context) (*VersionInfo, error) {
 	if err != nil {
 		return nil, fmt.Errorf("pinging Ray cluster: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -90,7 +90,7 @@ func (c *HTTPClient) ListJobDetails(ctx context.Context) ([]JobDetail, error) {
 	if err != nil {
 		return nil, fmt.Errorf("fetching job details: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -112,7 +112,7 @@ func (c *HTTPClient) GetJobLogs(ctx context.Context, submissionID string) (strin
 	if err != nil {
 		return "", fmt.Errorf("fetching job logs: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -136,7 +136,7 @@ func (c *HTTPClient) GetTaskSummary(ctx context.Context, jobID string) (*TaskSum
 	if err != nil {
 		return nil, fmt.Errorf("fetching task summary: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -171,7 +171,7 @@ func (c *HTTPClient) ListNodeLogs(ctx context.Context, nodeID string) (*NodeLogL
 	if err != nil {
 		return nil, fmt.Errorf("fetching node logs listing: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -204,7 +204,7 @@ func (c *HTTPClient) GetNodeLogFile(ctx context.Context, nodeID, filename string
 	if err != nil {
 		return "", fmt.Errorf("fetching node log file: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -227,7 +227,7 @@ func (c *HTTPClient) GetActorLogs(ctx context.Context, actorID string) (string, 
 	if err != nil {
 		return "", fmt.Errorf("fetching actor logs: %w", err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)
@@ -250,7 +250,7 @@ func (c *HTTPClient) GetServeApplications(ctx context.Context) (*ServeInstanceDe
 	if err != nil {
 		return nil, nil // Serve likely not running -- NOT an error
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode == http.StatusNotFound {
 		return nil, nil // Serve not deployed
@@ -282,7 +282,7 @@ func doStateAPIRequest[T any](c *HTTPClient, ctx context.Context, endpoint strin
 	if err != nil {
 		return nil, fmt.Errorf("fetching %s: %w", endpoint, err)
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unexpected status %d from %s", resp.StatusCode, url)

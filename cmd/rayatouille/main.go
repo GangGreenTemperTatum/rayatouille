@@ -16,11 +16,7 @@ import (
 
 // version, commit, and date are set at build time via ldflags.
 // GoReleaser injects: -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
-var (
-	version = "dev"
-	commit  = "none"
-	date    = "unknown"
-)
+var version = "dev"
 
 func main() {
 	rootCmd := newRootCmd()
@@ -97,18 +93,18 @@ func profileListCmd() *cobra.Command {
 			}
 
 			if len(cfg.Profiles) == 0 {
-				fmt.Fprintln(cmd.OutOrStdout(), "No profiles saved. Use 'rayatouille profile add' to create one.")
+				_, _ = fmt.Fprintln(cmd.OutOrStdout(), "No profiles saved. Use 'rayatouille profile add' to create one.")
 				return nil
 			}
 
-			fmt.Fprintf(cmd.OutOrStdout(), "%-20s %-40s %s\n", "NAME", "ADDRESS", "ACTIVE")
+			_, _ = fmt.Fprintf(cmd.OutOrStdout(), "%-20s %-40s %s\n", "NAME", "ADDRESS", "ACTIVE")
 			for _, name := range sortedKeys(cfg.Profiles) {
 				p := cfg.Profiles[name]
 				marker := ""
 				if name == cfg.ActiveProfile {
 					marker = "*"
 				}
-				fmt.Fprintf(cmd.OutOrStdout(), "%-20s %-40s %s\n", name, p.Address, marker)
+				_, _ = fmt.Fprintf(cmd.OutOrStdout(), "%-20s %-40s %s\n", name, p.Address, marker)
 			}
 			return nil
 		},
@@ -146,7 +142,7 @@ func profileAddCmd() *cobra.Command {
 				return err
 			}
 
-			fmt.Fprintf(cmd.OutOrStdout(), "Profile %q added.\n", name)
+			_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Profile %q added.\n", name)
 			return nil
 		},
 	}

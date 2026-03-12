@@ -321,24 +321,6 @@ func (m Model) renderResourceBars(width int) string {
 	return ui.SectionStyle.Width(width - 4).Render("Resource Utilization\n\n" + lines)
 }
 
-// renderJobsSummary renders job status counts.
-func (m Model) renderJobsSummary(width int) string {
-	if m.jobs.Total == 0 {
-		return ui.SectionStyle.Width(width - 4).Render("Jobs\n\nNo jobs found")
-	}
-
-	running := lipgloss.NewStyle().Foreground(ui.ColorSuccess).Render(fmt.Sprintf("%d running", m.jobs.Running))
-	pending := lipgloss.NewStyle().Foreground(ui.ColorWarning).Render(fmt.Sprintf("%d pending", m.jobs.Pending))
-	failed := lipgloss.NewStyle().Foreground(ui.ColorDanger).Render(fmt.Sprintf("%d failed", m.jobs.Failed))
-	succeeded := lipgloss.NewStyle().Foreground(ui.ColorMuted).Render(fmt.Sprintf("%d succeeded", m.jobs.Succeeded))
-
-	counts := fmt.Sprintf("%s | %s | %s | %s", running, pending, failed, succeeded)
-	total := fmt.Sprintf("%d total jobs", m.jobs.Total)
-
-	content := counts + "\n" + total
-	return ui.SectionStyle.Width(width - 4).Render("Jobs\n\n" + content)
-}
-
 // renderRecentJobs renders the last N jobs sorted by most recent activity.
 func (m Model) renderRecentJobs(width int) string {
 	if len(m.jobDetails) == 0 {

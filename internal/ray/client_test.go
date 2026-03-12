@@ -25,7 +25,7 @@ func TestPing_Success(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "/api/version", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "version.json"))
+		_, _ = w.Write(loadFixture(t, "version.json"))
 	}))
 	defer server.Close()
 
@@ -63,7 +63,7 @@ func TestListJobs_Success(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "/api/v0/jobs", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "jobs_state.json"))
+		_, _ = w.Write(loadFixture(t, "jobs_state.json"))
 	}))
 	defer server.Close()
 
@@ -91,7 +91,7 @@ func TestListJobs_Success(t *testing.T) {
 func TestListJobs_NullableFields(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "jobs_state.json"))
+		_, _ = w.Write(loadFixture(t, "jobs_state.json"))
 	}))
 	defer server.Close()
 
@@ -143,7 +143,7 @@ func TestListNodes_Success(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "/api/v0/nodes", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "nodes_state.json"))
+		_, _ = w.Write(loadFixture(t, "nodes_state.json"))
 	}))
 	defer server.Close()
 
@@ -160,7 +160,7 @@ func TestListNodes_Success(t *testing.T) {
 func TestListNodes_HeadNode(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "nodes_state.json"))
+		_, _ = w.Write(loadFixture(t, "nodes_state.json"))
 	}))
 	defer server.Close()
 
@@ -187,7 +187,7 @@ func TestListActors_Success(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "/api/v0/actors", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "actors_state.json"))
+		_, _ = w.Write(loadFixture(t, "actors_state.json"))
 	}))
 	defer server.Close()
 
@@ -204,7 +204,7 @@ func TestListActors_Success(t *testing.T) {
 func TestListActors_DeathCause(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "actors_state.json"))
+		_, _ = w.Write(loadFixture(t, "actors_state.json"))
 	}))
 	defer server.Close()
 
@@ -232,7 +232,7 @@ func TestListJobDetails_Success(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "/api/jobs/", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "jobs_rest.json"))
+		_, _ = w.Write(loadFixture(t, "jobs_rest.json"))
 	}))
 	defer server.Close()
 
@@ -268,24 +268,24 @@ func TestEndpointPaths(t *testing.T) {
 
 		switch r.URL.Path {
 		case "/api/version":
-			w.Write(loadFixture(t, "version.json"))
+			_, _ = w.Write(loadFixture(t, "version.json"))
 		case "/api/v0/jobs":
-			w.Write(loadFixture(t, "jobs_state.json"))
+			_, _ = w.Write(loadFixture(t, "jobs_state.json"))
 		case "/api/v0/nodes":
-			w.Write(loadFixture(t, "nodes_state.json"))
+			_, _ = w.Write(loadFixture(t, "nodes_state.json"))
 		case "/api/v0/actors":
-			w.Write(loadFixture(t, "actors_state.json"))
+			_, _ = w.Write(loadFixture(t, "actors_state.json"))
 		case "/api/jobs/":
-			w.Write(loadFixture(t, "jobs_rest.json"))
+			_, _ = w.Write(loadFixture(t, "jobs_rest.json"))
 		case "/api/jobs/raysubmit_test123/logs":
-			w.Write(loadFixture(t, "job_logs.json"))
+			_, _ = w.Write(loadFixture(t, "job_logs.json"))
 		case "/api/v0/tasks/summarize":
-			w.Write(loadFixture(t, "task_summary.json"))
+			_, _ = w.Write(loadFixture(t, "task_summary.json"))
 		case "/api/v0/logs":
-			w.Write(loadFixture(t, "node_logs.json"))
+			_, _ = w.Write(loadFixture(t, "node_logs.json"))
 		case "/api/v0/logs/file":
 			w.Header().Set("Content-Type", "text/plain")
-			w.Write(loadFixture(t, "node_log_file.txt"))
+			_, _ = w.Write(loadFixture(t, "node_log_file.txt"))
 		default:
 			w.WriteHeader(http.StatusNotFound)
 		}
@@ -342,7 +342,7 @@ func TestGetJobLogs_Success(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		assert.Equal(t, "/api/jobs/raysubmit_test123/logs", r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "job_logs.json"))
+		_, _ = w.Write(loadFixture(t, "job_logs.json"))
 	}))
 	defer server.Close()
 
@@ -369,7 +369,7 @@ func TestGetJobLogs_ServerError(t *testing.T) {
 func TestGetJobLogs_EmptyLogs(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"logs": ""}`))
+		_, _ = w.Write([]byte(`{"logs": ""}`))
 	}))
 	defer server.Close()
 
@@ -388,7 +388,7 @@ func TestGetTaskSummary_Success(t *testing.T) {
 		assert.Equal(t, "=", r.URL.Query().Get("filter_predicates"))
 		assert.Equal(t, "02000000", r.URL.Query().Get("filter_values"))
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "task_summary.json"))
+		_, _ = w.Write(loadFixture(t, "task_summary.json"))
 	}))
 	defer server.Close()
 
@@ -423,7 +423,7 @@ func TestGetTaskSummary_ServerError(t *testing.T) {
 func TestGetTaskSummary_APIError(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"result": false, "msg": "internal error", "data": {"result": {"result": {}}}}`))
+		_, _ = w.Write([]byte(`{"result": false, "msg": "internal error", "data": {"result": {"result": {}}}}`))
 	}))
 	defer server.Close()
 
@@ -436,7 +436,7 @@ func TestGetTaskSummary_APIError(t *testing.T) {
 func TestGetTaskSummary_EmptySummary(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"result": true, "msg": "", "data": {"result": {"total": 0, "result": {"node_id_to_summary": {"cluster": {"summary": {}, "total_tasks": 0, "total_actor_tasks": 0, "total_actor_scheduled": 0, "summary_by": "func_name"}}}}}}`))
+		_, _ = w.Write([]byte(`{"result": true, "msg": "", "data": {"result": {"total": 0, "result": {"node_id_to_summary": {"cluster": {"summary": {}, "total_tasks": 0, "total_actor_tasks": 0, "total_actor_scheduled": 0, "summary_by": "func_name"}}}}}}`))
 	}))
 	defer server.Close()
 
@@ -455,7 +455,7 @@ func TestListNodeLogs_Success(t *testing.T) {
 		assert.Equal(t, "/api/v0/logs", r.URL.Path)
 		assert.Equal(t, "node123", r.URL.Query().Get("node_id"))
 		w.Header().Set("Content-Type", "application/json")
-		w.Write(loadFixture(t, "node_logs.json"))
+		_, _ = w.Write(loadFixture(t, "node_logs.json"))
 	}))
 	defer server.Close()
 
@@ -485,7 +485,7 @@ func TestListNodeLogs_ServerError(t *testing.T) {
 func TestListNodeLogs_APIError(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		w.Write([]byte(`{"result": false, "msg": "node not found", "data": {"result": {}}}`))
+		_, _ = w.Write([]byte(`{"result": false, "msg": "node not found", "data": {"result": {}}}`))
 	}))
 	defer server.Close()
 
@@ -503,7 +503,7 @@ func TestGetNodeLogFile_Success(t *testing.T) {
 		assert.Equal(t, "node123", r.URL.Query().Get("node_id"))
 		assert.Equal(t, "raylet.out", r.URL.Query().Get("filename"))
 		w.Header().Set("Content-Type", "text/plain")
-		w.Write(loadFixture(t, "node_log_file.txt"))
+		_, _ = w.Write(loadFixture(t, "node_log_file.txt"))
 	}))
 	defer server.Close()
 
