@@ -1,4 +1,4 @@
-# rayatouille
+# rayatouille ("_rayaTuI_")
 
 <div align="center">
 
@@ -30,7 +30,7 @@ _... lightly sautéed with chaos where anyone can cook_ 🍝
 
 ---
 
-- [rayatouille](#rayatouille)
+- [rayatouille ("_rayaTuI_")](#rayatouille-rayatui)
   - [Features](#features)
   - [Install](#install)
   - [Usage](#usage)
@@ -40,6 +40,9 @@ _... lightly sautéed with chaos where anyone can cook_ 🍝
     - [Custom keybindings](#custom-keybindings)
     - [Shell completions](#shell-completions)
   - [MCP Server](#mcp-server)
+    - [Install](#install-1)
+    - [Configure](#configure)
+    - [Available Tools](#available-tools)
   - [Development](#development)
   - [Built with](#built-with)
   - [License](#license)
