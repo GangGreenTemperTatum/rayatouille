@@ -39,6 +39,7 @@ _... lightly sautéed with chaos where anyone can cook_ 🍝
     - [Config](#config)
     - [Custom keybindings](#custom-keybindings)
     - [Shell completions](#shell-completions)
+  - [MCP Server](#mcp-server)
   - [Development](#development)
   - [Built with](#built-with)
   - [License](#license)
@@ -56,6 +57,7 @@ _... lightly sautéed with chaos where anyone can cook_ 🍝
 - **Command palette** — fuzzy search commands with autocomplete (`:`), type to filter, Tab to cycle and fill
 - **Profiles** — save and switch between multiple clusters
 - **Custom keybindings** — fully configurable keys with auto-updating hint bar
+- **MCP server** — expose Ray cluster data to AI agents via [Model Context Protocol](https://modelcontextprotocol.io)
 - **Clipboard** — copy log lines (`y`) or visible page (`Y`) to clipboard
 - **Live refresh** — configurable polling interval with latency indicator
 - **Hotkey hints** — context-sensitive keybinding hints in every view
@@ -203,6 +205,51 @@ rayatouille completion zsh > "${fpath[1]}/_rayatouille"
 rayatouille completion fish > ~/.config/fish/completions/rayatouille.fish
 ```
 
+## MCP Server
+
+Rayatouille includes an MCP server that exposes Ray cluster data to AI agents (Claude Code, Cursor, etc.) via the [Model Context Protocol](https://modelcontextprotocol.io).
+
+### Install
+
+```bash
+go install github.com/GangGreenTemperTatum/rayatouille/cmd/rayatouille-mcp@latest
+```
+
+### Configure
+
+Add to your `.mcp.json` (Claude Code) or equivalent MCP config:
+
+```json
+{
+  "mcpServers": {
+    "rayatouille": {
+      "command": "rayatouille-mcp",
+      "env": {
+        "RAY_DASHBOARD_URL": "http://your-ray-cluster:8265"
+      }
+    }
+  }
+}
+```
+
+If `RAY_DASHBOARD_URL` is not set, it defaults to `http://localhost:8265`.
+
+### Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `ray_cluster_health` | Cluster health: version, node counts, resources, job summary |
+| `ray_list_jobs` | List all jobs with status, entrypoint, and timing |
+| `ray_list_nodes` | List nodes with state, IP, resources, and labels |
+| `ray_list_actors` | List actors with state, class, job ID, PID, and node |
+| `ray_serve_status` | Serve application status, deployments, and replicas |
+| `ray_cluster_events` | Cluster events with severity and timestamps |
+| `ray_job_logs` | Get logs for a job by submission ID |
+| `ray_task_summary` | Task summary for a job by job ID |
+| `ray_node_logs` | List available log files for a node |
+| `ray_node_log_file` | Get contents of a specific node log file |
+| `ray_actor_logs` | Get stdout logs for an actor |
+
 ## Development
 
 ```bash
@@ -219,7 +266,7 @@ Or use `make` -- same targets.
 
 ## Built with
 
-[Go](https://go.dev) / [Bubble Tea](https://github.com/charmbracelet/bubbletea) / [Lip Gloss](https://github.com/charmbracelet/lipgloss) / [Cobra](https://github.com/spf13/cobra) / [Ray Dashboard API](https://docs.ray.io/en/latest/cluster/dashboard.html)
+[Go](https://go.dev) / [Bubble Tea](https://github.com/charmbracelet/bubbletea) / [Lip Gloss](https://github.com/charmbracelet/lipgloss) / [Cobra](https://github.com/spf13/cobra) / [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk) / [Ray Dashboard API](https://docs.ray.io/en/latest/cluster/dashboard.html)
 
 ---
 

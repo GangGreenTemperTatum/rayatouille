@@ -38,6 +38,9 @@ Thumbs.db
 # Planning (internal)
 .planning/
 
+# MCP config (local paths)
+.mcp.json
+
 # Coverage
 coverage.txt
 coverage.html
